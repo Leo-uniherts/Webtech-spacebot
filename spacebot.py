@@ -29,12 +29,20 @@
  
 # 1. Import libraries for API requests, JSON formatting, epoch time conversion, and iso3166.
 
-<!!!REPLACEME with code for libraries>
+import requests
+import json
+import time
+from datetime import datetime 
+from iso3166 import countries
 
 # 2. Complete the if statement to ask the user for the Webex access token.
 choice = input("Do you wish to use the hard-coded Webex token? (y/n) ")
 
 <!!!REPLACEME with if statements to ask user for the Webex Access Token!!!>
+if choice == "y":
+    accessToken = input("Please input your Webex token: ")
+
+
 else:
     accessToken = "Bearer <!!!REPLACEME with hard-coded token!!!>"
 

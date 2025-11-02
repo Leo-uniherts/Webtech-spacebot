@@ -150,12 +150,12 @@ while True:
 # 9. Provide your Geoloaction API consumer key.
     
         mapsAPIGetParameters = { 
-                                <!!!REPLACEME with all the required paramenters by the api>
+                                "appid": pasteweatherapikey
                                }
     
 # 10. Provide the URL to the Reverse GeoCode API.
     # Get location information using the API reverse geocode service using the HTTP GET method
-        r = requests.get("<!!!REPLACEME with URL!!!>", 
+        r = requests.get(f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lng}&appid={pasteweatherapikey}", 
                              params = mapsAPIGetParameters
                         )
 

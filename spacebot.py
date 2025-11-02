@@ -166,8 +166,9 @@ while True:
             print("Error - a problem has occurred with retrieving geocode data")
 
 # 11. Store the location received from the API in a required variables
-        CountryResult = json_data["<!!!REPLACEME!!!> with path to adminArea1 key!!!>"]
-        <!!!REPLACEME with code to save state, city, street etc>
+        CountryResult = json_data["sys"]["country"]
+        CityResult = json_data["name"]
+        
         
         #Find the country name using ISO3611 country code
         if not CountryResult == "XZ":

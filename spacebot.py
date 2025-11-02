@@ -146,7 +146,7 @@ while True:
 # 8. Convert the timestamp epoch value to a human readable date and time.
         # Use the time.ctime function to convert the timestamp to a human readable date and time.
         timeString = time.ctime(timestamp)       
-   
+   #
 # 9. Provide your Geoloaction API consumer key.
     
         mapsAPIGetParameters = { 

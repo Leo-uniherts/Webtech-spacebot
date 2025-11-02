@@ -38,7 +38,6 @@ from iso3166 import countries
 # 2. Complete the if statement to ask the user for the Webex access token.
 choice = input("Do you wish to use the hard-coded Webex token? (y/n) ")
 
-<!!!REPLACEME with if statements to ask user for the Webex Access Token!!!>
 if choice == "n":
     accessToken = input("Please input your Webex token: ")
 
@@ -60,8 +59,8 @@ if not r.status_code == 200:
 print("\nList of available rooms:")
 rooms = r.json()["items"]
 for room in rooms:
-    <!!!REPLACEME with print code to finish the loop>
-
+    print(f"Type: {room['type']} | Title: {room['title']}")
+    
 #######################################################################################
 # SEARCH FOR WEBEX ROOM TO MONITOR
 #  - Searches for user-supplied room name.

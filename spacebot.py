@@ -69,7 +69,7 @@ for room in rooms:
 # DO NOT EDIT CODE IN THIS BLOCK
 #######################################################################################
 
-<!!!REPLACEME with code to start the loop and add break at appropriate place>:
+while True:
     roomNameToSearch = input("Which room should be monitored for the /seconds messages? ")
     roomIdToGetMessages = None
     

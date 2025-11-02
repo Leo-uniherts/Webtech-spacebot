@@ -39,15 +39,14 @@ from iso3166 import countries
 choice = input("Do you wish to use the hard-coded Webex token? (y/n) ")
 
 <!!!REPLACEME with if statements to ask user for the Webex Access Token!!!>
-if choice == "y":
+if choice == "n":
     accessToken = input("Please input your Webex token: ")
-
 
 else:
     accessToken = "Bearer <!!!REPLACEME with hard-coded token!!!>"
 
 # 3. Provide the URL to the Webex room API.
-r = requests.get(   "<!!!REPLACEME with URL!!!>",
+r = requests.get(   "<https://webexapis.com/v1/rooms>",
                     headers = {"Authorization": accessToken}
                 )
 

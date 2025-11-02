@@ -99,27 +99,29 @@ while True:
                             "max": 1
                     }
 # 5. Provide the URL to the Webex messages API.    
-    r = requests.get("<!!!REPLACEME with URL!!!>", 
+    r = requests.get("<https://webexapis.com/v1/messages>", 
                          params = GetParameters, 
                          headers = {"Authorization": accessToken}
                     )
     # verify if the retuned HTTP status code is 200/OK
-    if not r.status_code ==  <!!!REPLACEME with http code>:
+    if not r.status_code == 200:
         raise Exception( "Incorrect reply from Webex API. Status code: {}. Text: {}".format(r.status_code, r.text))
 
     json_data = r.json()
     if len(json_data["items"]) == 0:
-         <!!!REPLACEME with code for error handling>    
+        print("Error - there are no messages present")
+            
     
     messages = json_data["items"]
     message = messages[0]["text"]
-    <!!!REPLACEME with print code to print message>  
+    print(message)  
     
     if message.find("/") == 0:    
         if (message[1:].isdigit()):
             seconds = int(message[1:])  
         else:
-             <!!!REPLACEME with code for error handling>
+            print("Error occurred - the message does not correlate with the required format")
+            
     
     #for the sake of testing, the max number of seconds is set to 5.
         if seconds > 5:

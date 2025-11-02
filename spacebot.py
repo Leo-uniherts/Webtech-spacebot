@@ -181,9 +181,10 @@ while True:
         if CountryResult == "XZ":
             responseMessage = "On {}, the ISS was flying over a body of water at latitude {}° and longitude {}°.".format(timeString, lat, lng)
         
-<!!!REPLACEME with if statements to compose the message to display the current ISS location in the Webex Team room!!!>
-        elif
-        else
+
+        elif CountryResult:
+            responseMessage = "On {}, the ISS was flying over the following location: \n{} \n{}, {} \n{}\n({}\", {}\")".format(timeString, CityResult, CountryResult, lat, lng)
+
        
         # print the response message
         print("Sending to Webex: " +responseMessage)

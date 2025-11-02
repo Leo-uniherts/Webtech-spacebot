@@ -86,7 +86,7 @@ while True:
         print("Sorry, I didn't find any room with " + roomNameToSearch + " in it.")
         print("Please try again...")
     else:
-        <!!!REPLACEME with code to exit the loop>       
+        break      
 ######################################################################################
 # WEBEX BOT CODE
 #  Starts Webex bot to listen for and respond to /seconds messages.

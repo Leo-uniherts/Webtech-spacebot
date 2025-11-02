@@ -160,9 +160,10 @@ while True:
                         )
 
     # Verify if the returned JSON data from the API service are OK
-        json_data = <!!!REPLACEME with code>
+        json_data = r.json()
         
-        <!!!REPLACEME with code for error handling in case no response>
+        if r.status_code != 200:
+            print("Error - a problem has occurred with retrieving geocode data")
 
 # 11. Store the location received from the API in a required variables
         CountryResult = json_data["<!!!REPLACEME!!!> with path to adminArea1 key!!!>"]

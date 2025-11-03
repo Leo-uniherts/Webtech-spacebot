@@ -11,13 +11,16 @@ This investigation sheet helps you gather key technical information from the thr
 
 | Criteria | Details |
 |---------|---------|
-| API Base URL | `_______________________________` |
-| Authentication Method | `_______________________________` |
-| Endpoint to list rooms | `_______________________________` |
-| Endpoint to get messages | `_______________________________` |
-| Endpoint to send message | `_______________________________` |
-| Required headers | `_______________________________` |
-| Sample full GET or POST request | `_______________________________` |
+| API Base URL | `https://webexapis.com/v1` |
+| Authentication Method | `API key` |
+| Endpoint to list rooms | `https://webexapis.com/v1/rooms` |
+| Endpoint to get messages | `https://webexapis.com/v1/messages` |
+| Endpoint to send message | `https://webexapis.com/v1/messages` |
+| Required headers | `The API key and the json` |
+| Sample full GET or POST request | `PostData = {
+                            "roomId": room["id"],
+                            "text": responseMessage
+                        }' |
 
 ---
 
@@ -25,9 +28,9 @@ This investigation sheet helps you gather key technical information from the thr
 
 | Criteria | Details |
 |---------|---------|
-| API Base URL | `_______________________________` |
-| Endpoint for current ISS location | `_______________________________` |
-| Sample response format (example JSON) |  
+| API Base URL | `http://api.open-notify.org/iss-now.json` |
+| Endpoint for current ISS location | `http://api.open-notify.org/iss-now.json` |
+| Sample response format (example JSON) |  Json - the ISS was flying over a body of water at latitude -1.4638° and longitude 58.3433°.
 ```
 
 ```
@@ -39,13 +42,19 @@ This investigation sheet helps you gather key technical information from the thr
 
 | Criteria | Details |
 |---------|---------|
-| Provider used (circle one) | **LocationIQ / Mapbox/ other -provide detail** |
-| API Base URL | `_______________________________` |
-| Endpoint for reverse geocoding | `_______________________________` |
-| Authentication method | `_______________________________` |
-| Required query parameters | `_______________________________` |
+| Provider used (circle one) | ** open weather api** |
+| API Base URL | `https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lng}&appid=[API Key]` |
+| Endpoint for reverse geocoding | `https://api.openweathermap.org/data/2.5/reverse` |
+| Authentication method | `API key` |
+| Required query parameters | `roomID, ` |
 | Sample request with latitude/longitude | `_______________________________` |
-| Sample JSON response (formatted example) |  
+| Sample JSON response (formatted example) |  {
+  "coord": { "lon": -95.3698, "lat": 29.7604 },
+  "weather": [...],
+  "main": { ... },
+  "sys": { "country": "US" },
+  "name": "Houston"
+}
 ```
 
 ```
@@ -57,13 +66,13 @@ This investigation sheet helps you gather key technical information from the thr
 
 | Criteria | Details |
 |---------|---------|
-| Library used | `_______________________________` |
-| Function used to convert epoch | `_______________________________` |
-| Sample code to convert timestamp |  
+| Library used | `datetime` |
+| Function used to convert epoch | `time.ctime()` |
+| Sample code to convert timestamp |  timeString - time.ctime(timestamp)
 ```  
 ```
 |
-| Output (human-readable time) | `_______________________________` |
+| Output (human-readable time) | `On Mon Oct 27 08:32:51` |
 
 ---
 
@@ -76,24 +85,27 @@ This investigation sheet helps you gather key technical information from the thr
 - (Explain the communication between them & include a block diagram )
 
 ### 🔁 RESTful API Usage
-
+REST API enables client and server communication over HTTP with standard requests and responses.
 - 
-- 
+- client -> http, URL -> Server
+  ^                        l
+  l                        V
+     <-------------    json
 - 
 
 ### 🧠 MVC Pattern in Space Bot
 
 | Component   | Description |
 |------------|-------------|
-| **Model**  |  |
-| **View**   |  |
-| **Controller** |  |
+| **Model**  |handles the data and business logic  |
+| **View**   |handles the presentation and output  |
+| **Controller** | handles the input and the flow logic, coordinating between model and view |
 
 
 #### Example:
-- Model: 
-- View: 
-- Controller: 
+- Model: the code to request the data
+- View: code to print the data
+- Controller: the code that manages the data in the while true loop
 
 ---
 

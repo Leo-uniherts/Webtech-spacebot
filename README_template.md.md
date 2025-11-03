@@ -87,10 +87,8 @@ This investigation sheet helps you gather key technical information from the thr
 ### 🔁 RESTful API Usage
 REST API enables client and server communication over HTTP with standard requests and responses.
 - 
-- client -> http, URL -> Server
-  ^                        l
-  l                        V
-     <-------------    json
+- client -> http, URL -> Server -> json then json goes back to client
+
 - 
 
 ### 🧠 MVC Pattern in Space Bot

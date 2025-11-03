@@ -113,6 +113,7 @@ while True:
             
     
     messages = json_data["items"]
+
     message = messages[0]["text"]
     print(message)  
     
@@ -120,7 +121,12 @@ while True:
         if (message[1:].isdigit()):
             seconds = int(message[1:])  
         else:
-            print("Error occurred - the message does not correlate with the required format")
+            print("Error occurred - the message had started with a / but not correlate with the required format")
+
+    else:
+        print("Error occurred - the message does not correlate with the required format")
+        seconds = 5
+
             
     
     #for the sake of testing, the max number of seconds is set to 5.
@@ -191,19 +197,22 @@ while True:
 
 # 13. Complete the code to post the message to the Webex room.         
         # the Webex HTTP headers, including the Authoriztion and Content-Type
-        HTTPHeaders = { 
-                             "Authorization": <!!!REPLACEME!!!>,
-                             "Content-Type": "application/json"
-                           }
+        HTTPHeaders ={
+            "Authorization": "Bearer " +"" ,
+            "Content-Type": "application/json"
+        }
         
         PostData = {
-                            "roomId": <!!!REPLACEME!!!>,
-                            "text": <!!!REPLACEME!!!>
+                            "roomId": room["id"],
+                            "text": responseMessage
                         }
         # Post the call to the Webex message API.
-        r = requests.post( "<!!!REPLACEME with URL!!!>", 
-                              data = json.dumps(<!!!REPLACEME!!!>), 
-                              headers = <!!!REPLACEME!!!>
+        r = requests.post( "", 
+                              data = json.dumps(PostData), 
+                              headers = HTTPHeaders
                          )
-        <!!!REPLACEME with code for error handling in case request not successfull>
+        if r.status_code != 200:
+            print("Error - could not post data to Webex room")
+        else:
+            print("Success - data has successfully been sent to the Webex room")
                 

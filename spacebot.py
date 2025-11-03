@@ -42,10 +42,10 @@ if choice == "n":
     accessToken = input("Please input your Webex token: ")
 
 else:
-    accessToken = "Bearer <!!!REPLACEME with hard-coded token!!!>"
+    accessToken = "Bearer replacewithwebexapikey"
 
 # 3. Provide the URL to the Webex room API.
-r = requests.get(   "<https://webexapis.com/v1/rooms>",
+r = requests.get(   "https://webexapis.com/v1/rooms",
                     headers = {"Authorization": accessToken}
                 )
 
@@ -99,7 +99,7 @@ while True:
                             "max": 1
                     }
 # 5. Provide the URL to the Webex messages API.    
-    r = requests.get("<https://webexapis.com/v1/messages>", 
+    r = requests.get("https://webexapis.com/v1/messages", 
                          params = GetParameters, 
                          headers = {"Authorization": accessToken}
                     )
@@ -123,9 +123,7 @@ while True:
         else:
             print("Error occurred - the message had started with a / but not correlate with the required format")
 
-    else:
-        print("Error occurred - the message does not correlate with the required format")
-        seconds = 5
+   
 
             
     
@@ -156,12 +154,12 @@ while True:
 # 9. Provide your Geoloaction API consumer key.
     
         mapsAPIGetParameters = { 
-                                "appid": pasteweatherapikey
+                                "appid": "replacewithopenweatherapikey"
                                }
     
 # 10. Provide the URL to the Reverse GeoCode API.
     # Get location information using the API reverse geocode service using the HTTP GET method
-        r = requests.get(f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lng}&appid={pasteweatherapikey}", 
+        r = requests.get(f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lng}&appid=<replacewithOpenweatherapikey>", 
                              params = mapsAPIGetParameters
                         )
 
@@ -172,8 +170,12 @@ while True:
             print("Error - a problem has occurred with retrieving geocode data")
 
 # 11. Store the location received from the API in a required variables
-        CountryResult = json_data["sys"]["country"]
-        CityResult = json_data["name"]
+        try:
+            CountryResult = json_data["sys"]["country"]
+            CityResult = json_data["name"]
+        except:
+            CountryResult = "XZ"
+
         
         
         #Find the country name using ISO3611 country code
@@ -189,7 +191,7 @@ while True:
         
 
         elif CountryResult:
-            responseMessage = "On {}, the ISS was flying over the following location: \n{} \n{}, {} \n{}\n({}\", {}\")".format(timeString, CityResult, CountryResult, lat, lng)
+            responseMessage = "On {}, the ISS was flying over the following location: \n{} \n{}, {} \n{}\n".format(timeString, CityResult, CountryResult, lat, lng)
 
        
         # print the response message
@@ -198,7 +200,7 @@ while True:
 # 13. Complete the code to post the message to the Webex room.         
         # the Webex HTTP headers, including the Authoriztion and Content-Type
         HTTPHeaders ={
-            "Authorization": "Bearer " +"" ,
+            "Authorization": "Bearer " + "<replacewithWebexkey>" ,
             "Content-Type": "application/json"
         }
         
@@ -207,7 +209,7 @@ while True:
                             "text": responseMessage
                         }
         # Post the call to the Webex message API.
-        r = requests.post( "", 
+        r = requests.post( "https://webexapis.com/v1/messages", 
                               data = json.dumps(PostData), 
                               headers = HTTPHeaders
                          )
